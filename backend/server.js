@@ -32,6 +32,17 @@ const storage = {
     actions: []
 };
 
+/**
+ * Generate a unique ID for insights and actions
+ * Uses timestamp + random string for uniqueness
+ */
+function generateUniqueId(prefix = 'id') {
+    const timestamp = Date.now();
+    const randomStr = Math.random().toString(36).substring(2, 11);
+    const counter = Math.floor(Math.random() * 10000);
+    return `${prefix}_${timestamp}_${randomStr}_${counter}`;
+}
+
 // Health check endpoint
 app.get('/health', (req, res) => {
     res.json({ 
@@ -129,7 +140,7 @@ app.post('/api/insights/:id/acknowledge', (req, res) => {
             
             // Record action
             storage.actions.push({
-                id: `action_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+                id: generateUniqueId('action'),
                 type: 'acknowledge',
                 insightId: id,
                 insightTitle: insight.title,
@@ -161,7 +172,7 @@ app.post('/api/actions/slack', async (req, res) => {
         
         // Record action
         const action = {
-            id: `action_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            id: generateUniqueId('action'),
             type: 'slack_post',
             insightId: insightId,
             insightTitle: insight.title,
@@ -199,7 +210,7 @@ app.post('/api/actions/salesforce', async (req, res) => {
         
         // Record action
         const action = {
-            id: `action_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+            id: generateUniqueId('action'),
             type: 'salesforce_task',
             insightId: insightId,
             insightTitle: insight.title,

@@ -579,14 +579,17 @@ async function acknowledgeInsight(insightId) {
             }
         });
         
-        if (response.ok || true) { // Allow local acknowledgment even if backend is down
-            // Remove acknowledged insight from display
+        if (response.ok) {
             dashboardState.insights = dashboardState.insights.filter(i => i.id !== insightId);
             renderInsights(dashboardState.insights);
             loadActions();
+        } else {
+            // Fallback to local acknowledgment if backend fails
+            dashboardState.insights = dashboardState.insights.filter(i => i.id !== insightId);
+            renderInsights(dashboardState.insights);
         }
     } catch (error) {
-        // Still acknowledge locally
+        // Still acknowledge locally when backend is unavailable
         dashboardState.insights = dashboardState.insights.filter(i => i.id !== insightId);
         renderInsights(dashboardState.insights);
         console.warn('Backend unavailable, acknowledged locally');
