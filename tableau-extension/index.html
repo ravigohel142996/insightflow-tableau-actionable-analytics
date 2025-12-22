@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsightFlow - Actionable Analytics</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://extensions.tableau.com/tableau.extensions.1.latest.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>InsightFlow</h1>
+            <p class="subtitle">Actionable Analytics for Tableau Cloud</p>
+        </header>
+
+        <section id="connection-status" class="card">
+            <h2>Dashboard Connection</h2>
+            <div id="dashboard-info" class="info-box">
+                <p id="connection-message">Connecting to dashboard...</p>
+            </div>
+        </section>
+
+        <section id="metrics-section" class="card">
+            <h2>Semantic Metrics</h2>
+            <div id="metrics-list" class="metrics-container">
+                <!-- Metrics will be populated dynamically -->
+            </div>
+        </section>
+
+        <section id="insights-section" class="card">
+            <h2>Active Insights</h2>
+            <p class="section-description">Insights are generated based on metric thresholds and trend analysis</p>
+            <div id="insights-list" class="insights-container">
+                <!-- Insights will be populated dynamically -->
+            </div>
+            <button id="refresh-insights" class="btn btn-primary">Refresh Insights</button>
+        </section>
+
+        <section id="actions-section" class="card">
+            <h2>Recent Actions</h2>
+            <div id="actions-list" class="actions-container">
+                <!-- Actions will be populated dynamically -->
+            </div>
+        </section>
+
+        <footer>
+            <p class="footer-text">InsightFlow v1.0 | Enterprise Analytics Extension</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
