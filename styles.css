@@ -39,6 +39,13 @@ header h1 {
     font-size: 14px;
 }
 
+.info-note {
+    color: #5f6368;
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 8px;
+}
+
 /* Card sections */
 .card {
     background-color: #fff;
