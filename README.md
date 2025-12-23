@@ -98,11 +98,16 @@ Rule-based and statistical analysis (no AI/ML claims):
 ```
 insightflow-tableau-actionable-analytics/
 │
-├── tableau-extension/          # Frontend extension
-│   ├── index.html             # Main UI
-│   ├── main.js                # Core logic and Tableau API integration
-│   ├── styles.css             # Professional, minimal styling
-│   └── manifest.trex          # Tableau extension manifest
+├── index.html                 # Main UI (Tableau extension frontend)
+├── main.js                    # Core logic and Tableau API integration
+├── styles.css                 # Professional, minimal styling
+├── manifest.trex              # Tableau extension manifest
+│
+├── tableau-extension/         # Original extension source (for reference)
+│   ├── index.html
+│   ├── main.js
+│   ├── styles.css
+│   └── manifest.trex
 │
 ├── backend/                   # Backend service (optional)
 │   ├── server.js              # Express server
@@ -120,6 +125,8 @@ insightflow-tableau-actionable-analytics/
 ├── package.json               # Node.js dependencies
 └── README.md                  # This file
 ```
+
+**Note**: The extension files are now in the repository root for GitHub Pages deployment.
 
 ## Setup Instructions
 
@@ -161,22 +168,28 @@ The backend will run on `http://localhost:3000`
 
 ### 5. Set Up the Tableau Extension
 
-#### Option A: Local Development
+#### Option A: GitHub Pages (Recommended for Quick Start)
+The extension is now hosted at: https://ravigohel142996.github.io/insightflow-tableau-actionable-analytics/
+
+1. Use the extension directly from GitHub Pages
+2. Update `manifest.trex` source-location URL to point to the GitHub Pages URL
+3. Load the extension in Tableau Desktop or Tableau Cloud
+
+#### Option B: Local Development
 1. Serve the extension files locally:
    ```bash
    # Install a simple HTTP server
    npm install -g http-server
    
-   # Serve the extension directory
-   cd tableau-extension
+   # Serve from the repository root
    http-server -p 8080 --cors
    ```
 
 2. Update `manifest.trex` source-location URL if needed
 3. Load the extension in Tableau Desktop or Tableau Cloud
 
-#### Option B: Production Deployment
-1. Host the `tableau-extension/` files on a web server with HTTPS
+#### Option C: Custom Production Deployment
+1. Host the extension files (`index.html`, `main.js`, `styles.css`, `manifest.trex`) on a web server with HTTPS
 2. Update the `manifest.trex` with your production URL
 3. Sign the manifest file (for Tableau Cloud)
 4. Add the extension to your Tableau dashboard
