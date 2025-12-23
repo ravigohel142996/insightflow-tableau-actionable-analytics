@@ -7,7 +7,7 @@
     <author name="InsightFlow" email="support@insightflow.io" organization="InsightFlow" website="https://insightflow.io"/>
     <min-api-version>1.0</min-api-version>
     <source-location>
-      <url>http://localhost:8080/index.html</url>
+      <url>https://ravigohel142996.github.io/insightflow-tableau-actionable-analytics/index.html</url>
     </source-location>
     <icon>
       <!-- Base64 encoded icon would go here in production -->
