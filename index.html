@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InsightFlow - Actionable Analytics</title>
+    
+    <!-- Relative path for GitHub Pages compatibility -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Tableau Extensions API - loaded from official CDN -->
     <script src="https://extensions.tableau.com/tableau.extensions.1.latest.min.js"></script>
 </head>
 <body>
@@ -31,7 +35,8 @@
 
         <section id="insights-section" class="card">
             <h2>Active Insights</h2>
-            <p class="section-description">Insights are generated based on metric thresholds and trend analysis</p>
+            <!-- Explanation of rule-based insight detection for transparency -->
+            <p class="section-description">Insights are generated based on metric thresholds and trend analysis using deterministic rules</p>
             <div id="insights-list" class="insights-container">
                 <!-- Insights will be populated dynamically -->
             </div>
@@ -50,6 +55,7 @@
         </footer>
     </div>
 
+    <!-- Load main extension logic -->
     <script src="main.js"></script>
 </body>
 </html>
