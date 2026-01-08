@@ -15,7 +15,10 @@
 'use strict';
 
 // Configuration
-// Backend URL defaults to localhost for development but can be overridden via config
+// Backend URL for optional enhanced processing
+// NOTE: Uses HTTP for local development. In production deployment, this should
+// be configured to use HTTPS (e.g., via environment variable or config file).
+// For hackathon demo, backend is optional - extension works standalone.
 const BACKEND_URL = 'http://localhost:3000';
 
 // Auto-refresh interval set to 30 seconds to balance real-time updates with API load
@@ -100,12 +103,16 @@ function handleInitializationError(error) {
     // Extract meaningful error message for user display
     let userMessage = 'Connection failed';
     if (error && error.message) {
-        // Simplify technical error messages for end users
-        if (error.message.includes('not running')) {
+        // Provide user-friendly messages for common error scenarios
+        // Note: Error message matching is a fallback approach. Ideally, use
+        // error codes if Tableau API provides them in future versions.
+        const errorMsg = error.message.toLowerCase();
+        if (errorMsg.includes('not running') || errorMsg.includes('not loaded')) {
             userMessage = 'Extension must run inside Tableau Desktop or Cloud';
-        } else if (error.message.includes('permission')) {
+        } else if (errorMsg.includes('permission') || errorMsg.includes('access')) {
             userMessage = 'Data access permission required';
         } else {
+            // Show original error for unexpected cases to aid troubleshooting
             userMessage = error.message;
         }
     }
